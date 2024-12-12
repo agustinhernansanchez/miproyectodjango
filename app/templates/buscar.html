@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Buscar - Biblioteca{% endblock %}
+
+{% block contenido %}
+<h2>Buscar en la Biblioteca</h2>
+<form method="get">
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+{% if resultados %}
+    <h3>Resultados de la búsqueda:</h3>
+    {% for tipo, items in resultados.items %}
+        <h4>{{ tipo }}</h4>
+        {% if items %}
+            <ul>
+                {% for item in items %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se encontraron {{ tipo|lower }} que coincidan.</p>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endblock %}

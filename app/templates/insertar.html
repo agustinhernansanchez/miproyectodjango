@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Insertar Datos - Biblioteca{% endblock %}
+
+{% block contenido %}
+<h2>Insertar Nuevos Datos</h2>
+<form method="post">
+    {% csrf_token %}
+    <h3>Libro</h3>
+    {{ libro_form.as_p }}
+    <h3>Revista</h3>
+    {{ revista_form.as_p }}
+    <h3>Periódico</h3>
+    {{ periodico_form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}
